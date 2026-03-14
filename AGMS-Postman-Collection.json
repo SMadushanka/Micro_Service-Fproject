@@ -1,0 +1,667 @@
+{
+  "info": {
+    "name": "AGMS System — Full API Collection",
+    "description": "Complete Postman collection for the Agricultural Management System (AGMS).\n\nAll API requests go through the Gateway on port 8080.\n\n--- HOW TO GET YOUR TOKEN ---\n1. Run '0. AGMS Login' first — it calls POST /auth/login on the gateway\n2. Your AGMS JWT is automatically saved to the {{jwt_token}} variable\n3. All other requests use it automatically via the collection-level Bearer auth\n\nDO NOT use the IoT platform token for gateway requests — it will always return 401.\n\nStartup order:\n1. eureka-server (8761)\n2. config-server (8888)\n3. zone-service, sensor-service, automation-service, crop-service\n4. api-gateway (8080)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "agms-collection-v1"
+  },
+  "variable": [
+    { "key": "gateway_url",   "value": "http://localhost:8080",                 "type": "string" },
+    { "key": "iot_base_url",  "value": "http://104.211.95.241:8080/api",        "type": "string" },
+    { "key": "jwt_token",     "value": "",                                       "type": "string", "description": "AGMS JWT — auto-set by the '0. AGMS Login' request. DO NOT paste an IoT token here." },
+    { "key": "iot_token",     "value": "",                                       "type": "string", "description": "IoT platform Bearer token (auto-set by IoT Login request)" },
+    { "key": "zone_id",       "value": "1",                                      "type": "string" },
+    { "key": "sensor_device", "value": "6dd1b80c-4a05-4ec0-a371-f7782774435a",  "type": "string" },
+    { "key": "crop_id",       "value": "1",                                      "type": "string" }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [{ "key": "token", "value": "{{jwt_token}}", "type": "string" }]
+  },
+  "item": [
+    {
+      "name": "0. AGMS Login — Run This First!",
+      "description": "Get an AGMS JWT from the gateway. Run this before any other request. The token is saved automatically to {{jwt_token}}.",
+      "item": [
+        {
+          "name": "AGMS Login (get gateway JWT)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Login successful', () => pm.response.to.have.status(200));",
+                  "var json = pm.response.json();",
+                  "pm.test('AGMS token received', () => pm.expect(json.token).to.be.a('string'));",
+                  "if (json.token) {",
+                  "  pm.collectionVariables.set('jwt_token', json.token);",
+                  "  console.log('✅ AGMS JWT saved to {{jwt_token}}. All other requests are now authorized.');",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{gateway_url}}/auth/login", "host": ["{{gateway_url}}"], "path": ["auth", "login"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"sampath\",\n  \"password\": \"your-iot-password-here\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Validates credentials against the external IoT platform, then returns an AGMS-signed JWT valid for 24 hours.\n\nReplace the username/password with your actual IoT platform credentials."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "1. IoT Auth APIs (Direct — no Gateway JWT needed)",
+      "description": "Calls directly to the external IoT platform. No AGMS JWT required.",
+      "item": [
+        {
+          "name": "Register IoT User",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{iot_base_url}}/auth/register", "host": ["{{iot_base_url}}"], "path": ["auth", "register"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"testpassword\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login IoT User (IoT token — NOT for gateway)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var json = pm.response.json();",
+                  "if (json.token) { pm.collectionVariables.set('iot_token', json.token); }",
+                  "pm.test('Login successful', () => pm.response.to.have.status(200));",
+                  "pm.test('Token received', () => pm.expect(json.token).to.be.a('string'));",
+                  "console.log('ℹ️ This is the IoT platform token. Use {{iot_token}} for IoT API calls only. For gateway API calls, use {{jwt_token}} from the AGMS Login request.');"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{iot_base_url}}/auth/login", "host": ["{{iot_base_url}}"], "path": ["auth", "login"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"testpassword\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Refresh IoT Token",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{iot_base_url}}/auth/refresh", "host": ["{{iot_base_url}}"], "path": ["auth", "refresh"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refreshToken\": \"PASTE_REFRESH_TOKEN_HERE\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get IoT Devices",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{iot_token}}" }],
+            "url": { "raw": "{{iot_base_url}}/devices", "host": ["{{iot_base_url}}"], "path": ["devices"] }
+          },
+          "response": []
+        },
+        {
+          "name": "Create IoT Device",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{iot_token}}" }
+            ],
+            "url": { "raw": "{{iot_base_url}}/devices", "host": ["{{iot_base_url}}"], "path": ["devices"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deviceName\": \"GreenZone-Sensor-1\",\n  \"deviceType\": \"TEMPERATURE_SENSOR\",\n  \"location\": \"Greenhouse A\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "2. Zone Management APIs (via Gateway)",
+      "description": "Zone CRUD + IoT proxy endpoints. All require AGMS JWT.",
+      "item": [
+        {
+          "name": "Create Zone",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var json = pm.response.json();",
+                  "if (json.id) { pm.collectionVariables.set('zone_id', json.id); }",
+                  "pm.test('Zone created', () => pm.response.to.have.status(201));",
+                  "pm.test('Has deviceId', () => pm.expect(json.deviceId).to.be.a('string'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{gateway_url}}/api/zones", "host": ["{{gateway_url}}"], "path": ["api", "zones"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Greenhouse A\",\n  \"description\": \"Main tomato greenhouse\",\n  \"iotUsername\": \"testuser\",\n  \"iotPassword\": \"testpassword\",\n  \"deviceName\": \"GreenZone-Sensor-1\",\n  \"deviceType\": \"TEMPERATURE_SENSOR\",\n  \"minTemp\": 18.0,\n  \"maxTemp\": 32.0\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Zone — Invalid Temp (minTemp > maxTemp, expect 400)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Rejected with 400', () => pm.response.to.have.status(400));",
+                  "pm.test('Error message present', () => pm.expect(pm.response.json().message).to.include('minTemp'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{gateway_url}}/api/zones", "host": ["{{gateway_url}}"], "path": ["api", "zones"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Bad Zone\",\n  \"iotUsername\": \"testuser\",\n  \"iotPassword\": \"testpassword\",\n  \"deviceName\": \"Sensor-Bad\",\n  \"deviceType\": \"TEMPERATURE_SENSOR\",\n  \"minTemp\": 50.0,\n  \"maxTemp\": 10.0\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Zones",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Returns array', () => pm.expect(pm.response.json()).to.be.an('array'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{gateway_url}}/api/zones", "host": ["{{gateway_url}}"], "path": ["api", "zones"] }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Zone By ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Has minTemp & maxTemp', () => { var j = pm.response.json(); pm.expect(j.minTemp).to.exist; pm.expect(j.maxTemp).to.exist; });"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{gateway_url}}/api/zones/{{zone_id}}", "host": ["{{gateway_url}}"], "path": ["api", "zones", "{{zone_id}}"] }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Zone",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('maxTemp updated', () => pm.expect(pm.response.json().maxTemp).to.eql(35.0));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{gateway_url}}/api/zones/{{zone_id}}", "host": ["{{gateway_url}}"], "path": ["api", "zones", "{{zone_id}}"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Greenhouse A (Updated)\",\n  \"description\": \"Main tomato greenhouse — updated thresholds\",\n  \"minTemp\": 20.0,\n  \"maxTemp\": 35.0\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Zone",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 204 No Content', () => pm.response.to.have.status(204));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{gateway_url}}/api/zones/{{zone_id}}", "host": ["{{gateway_url}}"], "path": ["api", "zones", "{{zone_id}}"] }
+          },
+          "response": []
+        },
+        {
+          "name": "Get IoT Devices (via Zone Service proxy)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "X-IoT-Token", "value": "{{iot_token}}" }],
+            "url": { "raw": "{{gateway_url}}/api/zones/iot/devices", "host": ["{{gateway_url}}"], "path": ["api", "zones", "iot", "devices"] }
+          },
+          "response": []
+        },
+        {
+          "name": "Refresh IoT Token (via Zone Service proxy)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{gateway_url}}/api/zones/iot/refresh", "host": ["{{gateway_url}}"], "path": ["api", "zones", "iot", "refresh"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refreshToken\": \"PASTE_REFRESH_TOKEN_HERE\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "3. Sensor Telemetry APIs (via Gateway)",
+      "description": "Sensor telemetry endpoints. Scheduler auto-pushes data every 10 seconds.",
+      "item": [
+        {
+          "name": "Get Latest Sensor Reading",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200 or 204', () => pm.expect([200, 204]).to.include(pm.response.code));",
+                  "if (pm.response.code === 200) {",
+                  "  var j = pm.response.json();",
+                  "  pm.test('Has temperature', () => pm.expect(j.temperature).to.be.a('number'));",
+                  "  pm.test('Has humidity', () => pm.expect(j.humidity).to.be.a('number'));",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{gateway_url}}/api/sensors/latest", "host": ["{{gateway_url}}"], "path": ["api", "sensors", "latest"] }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "4. Automation & Control APIs (via Gateway)",
+      "description": "Automation rule evaluation and action log endpoints.",
+      "item": [
+        {
+          "name": "Process Temperature (Trigger Rule Engine)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 201', () => pm.response.to.have.status(201));",
+                  "var j = pm.response.json();",
+                  "pm.test('Has action', () => pm.expect(['TURN_FAN_ON','TURN_HEATER_ON','NO_ACTION']).to.include(j.action));",
+                  "pm.test('Has zoneId', () => pm.expect(j.zoneId).to.eql(1));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{gateway_url}}/api/automation/process", "host": ["{{gateway_url}}"], "path": ["api", "automation", "process"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"zoneId\": {{zone_id}},\n  \"currentTemp\": 38.5\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Process — Temp Below minTemp (expect TURN_HEATER_ON)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 201', () => pm.response.to.have.status(201));",
+                  "pm.test('Action is TURN_HEATER_ON', () => pm.expect(pm.response.json().action).to.eql('TURN_HEATER_ON'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{gateway_url}}/api/automation/process", "host": ["{{gateway_url}}"], "path": ["api", "automation", "process"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"zoneId\": {{zone_id}},\n  \"currentTemp\": 5.0\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Automation Logs",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Returns array', () => pm.expect(pm.response.json()).to.be.an('array'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{gateway_url}}/api/automation/logs", "host": ["{{gateway_url}}"], "path": ["api", "automation", "logs"] }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Automation Logs By Zone",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{gateway_url}}/api/automation/logs?zoneId={{zone_id}}",
+              "host": ["{{gateway_url}}"],
+              "path": ["api", "automation", "logs"],
+              "query": [{ "key": "zoneId", "value": "{{zone_id}}" }]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "5. Crop Inventory APIs (via Gateway)",
+      "description": "Crop lifecycle management. State machine: SEEDLING → VEGETATIVE → HARVESTED.",
+      "item": [
+        {
+          "name": "Create Crop",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var j = pm.response.json();",
+                  "if (j.id) { pm.collectionVariables.set('crop_id', j.id); }",
+                  "pm.test('Status 201', () => pm.response.to.have.status(201));",
+                  "pm.test('Status is SEEDLING', () => pm.expect(j.status).to.eql('SEEDLING'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{gateway_url}}/api/crops", "host": ["{{gateway_url}}"], "path": ["api", "crops"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Tomato\",\n  \"quantity\": 150,\n  \"zoneId\": {{zone_id}}\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Crops",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Returns array', () => pm.expect(pm.response.json()).to.be.an('array'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{gateway_url}}/api/crops", "host": ["{{gateway_url}}"], "path": ["api", "crops"] }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Crop By ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{gateway_url}}/api/crops/{{crop_id}}", "host": ["{{gateway_url}}"], "path": ["api", "crops", "{{crop_id}}"] }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Crop Status — SEEDLING → VEGETATIVE",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Status is VEGETATIVE', () => pm.expect(pm.response.json().status).to.eql('VEGETATIVE'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{gateway_url}}/api/crops/{{crop_id}}/status?status=VEGETATIVE",
+              "host": ["{{gateway_url}}"],
+              "path": ["api", "crops", "{{crop_id}}", "status"],
+              "query": [{ "key": "status", "value": "VEGETATIVE" }]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Crop Status — VEGETATIVE → HARVESTED",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Status is HARVESTED', () => pm.expect(pm.response.json().status).to.eql('HARVESTED'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{gateway_url}}/api/crops/{{crop_id}}/status?status=HARVESTED",
+              "host": ["{{gateway_url}}"],
+              "path": ["api", "crops", "{{crop_id}}", "status"],
+              "query": [{ "key": "status", "value": "HARVESTED" }]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Crop Status — Invalid Transition (expect 400)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 400', () => pm.response.to.have.status(400));",
+                  "pm.test('Error mentions transition', () => pm.expect(pm.response.json().message).to.include('transition'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{gateway_url}}/api/crops/{{crop_id}}/status?status=SEEDLING",
+              "host": ["{{gateway_url}}"],
+              "path": ["api", "crops", "{{crop_id}}", "status"],
+              "query": [{ "key": "status", "value": "SEEDLING" }]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Crop",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 204', () => pm.response.to.have.status(204));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{gateway_url}}/api/crops/{{crop_id}}", "host": ["{{gateway_url}}"], "path": ["api", "crops", "{{crop_id}}"] }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "6. JWT Security Tests",
+      "description": "Verify gateway authentication behaviour.",
+      "item": [
+        {
+          "name": "No Token — Expect 401",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Returns 401', () => pm.response.to.have.status(401));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "url": { "raw": "{{gateway_url}}/api/zones", "host": ["{{gateway_url}}"], "path": ["api", "zones"] }
+          },
+          "response": []
+        },
+        {
+          "name": "Invalid Token — Expect 401",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Returns 401', () => pm.response.to.have.status(401));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [{ "key": "token", "value": "this.is.not.a.valid.jwt", "type": "string" }]
+            },
+            "method": "GET",
+            "url": { "raw": "{{gateway_url}}/api/zones", "host": ["{{gateway_url}}"], "path": ["api", "zones"] }
+          },
+          "response": []
+        },
+        {
+          "name": "Valid Token — Expect 200",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Returns 200', () => pm.response.to.have.status(200));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{gateway_url}}/api/zones", "host": ["{{gateway_url}}"], "path": ["api", "zones"] }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: zone-service          # Must be here - used by Config Server to resolve zone-service.yml
+  cloud:
+    config:
+      uri: http://localhost:8888  # Config Server address
+      fail-fast: true             # Fail startup if Config Server is unreachable
+      retry:
+        max-attempts: 6
+        initial-interval: 1000    # Wait 1s before first retry
+        multiplier: 1.5
+        max-interval: 2000

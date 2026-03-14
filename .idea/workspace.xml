@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a46e6583-d3cd-46cf-8cc8-fbca80e4d2d4" name="Changes" comment="add IoT integration components for device management and authentication">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Automation-Control-Service/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Automation-Control-Service/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Automation-Control-Service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Automation-Control-Service/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Automation-Control-Service/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Automation-Control-Service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Automation-Control-Service/src/main/java/com/myapp/Automation_Control_Service/AutomationControlServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Automation-Control-Service/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Automation-Control-Service/src/test/java/com/myapp/Automation_Control_Service/AutomationControlServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crop-Inventory-Service/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crop-Inventory-Service/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crop-Inventory-Service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crop-Inventory-Service/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crop-Inventory-Service/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crop-Inventory-Service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crop-Inventory-Service/src/main/java/com/myapp/Crop_Inventory_Service/CropInventoryServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crop-Inventory-Service/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crop-Inventory-Service/src/test/java/com/myapp/Crop_Inventory_Service/CropInventoryServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sensor-Telemetry-Service/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sensor-Telemetry-Service/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sensor-Telemetry-Service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sensor-Telemetry-Service/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sensor-Telemetry-Service/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sensor-Telemetry-Service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sensor-Telemetry-Service/src/main/java/com/myapp/Sensor_Telemetry_Service/SensorTelemetryServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sensor-Telemetry-Service/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sensor-Telemetry-Service/src/test/java/com/myapp/Sensor_Telemetry_Service/SensorTelemetryServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zone-Management-Service/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zone-Management-Service/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zone-Management-Service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zone-Management-Service/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zone-Management-Service/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zone-Management-Service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zone-Management-Service/src/main/java/com/myapp/Zone_Management_Service/ZoneManagementServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zone-Management-Service/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zone-Management-Service/src/test/java/com/myapp/Zone_Management_Service/ZoneManagementServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-registery/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-registery/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-registery/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-registery/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-registery/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-registery/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-registery/src/main/java/com/myapp/service_registery/ServiceRegisteryApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-registery/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-registery/src/test/java/com/myapp/service_registery/ServiceRegisteryApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_D:/IJSE 71/MS F-project" value="3AwVpZKFFeK6xxTgFPs5pt6SbUk" />
+    </persistenceIdMap>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;SMadushanka&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/SMadushanka/Micro_Service-Fproject.git&quot;,
+    &quot;accountId&quot;: &quot;c594628f-7728-461e-957b-60962d2e3b78&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="3AwVpZKFFeK6xxTgFPs5pt6SbUk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/IJSE 71/MS F-project&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  }
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26199.169" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a46e6583-d3cd-46cf-8cc8-fbca80e4d2d4" name="Changes" comment="" />
+      <created>1773503804242</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1773503804242</updated>
+    </task>
+    <task id="LOCAL-00001" summary="update VCS directory mapping in vcs.xml">
+      <option name="closed" value="true" />
+      <created>1773504814739</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1773504814739</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add .gitattributes for end-of-line normalization">
+      <option name="closed" value="true" />
+      <created>1773504991900</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1773504991900</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add .gitignore file to exclude IDE and build artifacts">
+      <option name="closed" value="true" />
+      <created>1773505019941</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505019941</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add AGMS Postman collection for full API testing">
+      <option name="closed" value="true" />
+      <created>1773505038467</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505038467</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add ApiGatewayApplication class for Spring Boot application">
+      <option name="closed" value="true" />
+      <created>1773505059109</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505059109</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add unit tests for ApiGatewayApplication">
+      <option name="closed" value="true" />
+      <created>1773505076684</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505076684</updated>
+    </task>
+    <task id="LOCAL-00007" summary="move configuration to bootstrap.yml and application.yml">
+      <option name="closed" value="true" />
+      <created>1773505098769</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505098769</updated>
+    </task>
+    <task id="LOCAL-00008" summary="add application.yml configuration for multiple services and databases">
+      <option name="closed" value="true" />
+      <created>1773505128613</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505128613</updated>
+    </task>
+    <task id="LOCAL-00009" summary="add AuthController for user authentication via IoT platform">
+      <option name="closed" value="true" />
+      <created>1773505143835</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505143835</updated>
+    </task>
+    <task id="LOCAL-00010" summary="add automation service components including controller, service, model, and repository">
+      <option name="closed" value="true" />
+      <created>1773505165675</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505165675</updated>
+    </task>
+    <task id="LOCAL-00011" summary="add bootstrap configuration for multiple services including api-gateway, automation-service, crop-service, sensor-service, and zone-service">
+      <option name="closed" value="true" />
+      <created>1773505182962</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505182962</updated>
+    </task>
+    <task id="LOCAL-00012" summary="add Config Server application and tests for configuration management">
+      <option name="closed" value="true" />
+      <created>1773505208376</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505208376</updated>
+    </task>
+    <task id="LOCAL-00013" summary="add Crop entity with fields for name, quantity, zoneId, and status">
+      <option name="closed" value="true" />
+      <created>1773505223846</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505223846</updated>
+    </task>
+    <task id="LOCAL-00014" summary="add CropController, CropRepository, and CropRequest for managing crop entities">
+      <option name="closed" value="true" />
+      <created>1773505236865</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505236865</updated>
+    </task>
+    <task id="LOCAL-00015" summary="add CropService and CropResponse for managing crop lifecycle and status updates">
+      <option name="closed" value="true" />
+      <created>1773505251644</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505251644</updated>
+    </task>
+    <task id="LOCAL-00016" summary="add EurekaServerApplication and GlobalExceptionHandler for service discovery and error handling">
+      <option name="closed" value="true" />
+      <created>1773505273338</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505273338</updated>
+    </task>
+    <task id="LOCAL-00017" summary="add IoT integration components for device management and authentication">
+      <option name="closed" value="true" />
+      <created>1773505297820</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505297820</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update VCS directory mapping in vcs.xml" />
+    <MESSAGE value="add .gitattributes for end-of-line normalization" />
+    <MESSAGE value="add .gitignore file to exclude IDE and build artifacts" />
+    <MESSAGE value="add AGMS Postman collection for full API testing" />
+    <MESSAGE value="add ApiGatewayApplication class for Spring Boot application" />
+    <MESSAGE value="add unit tests for ApiGatewayApplication" />
+    <MESSAGE value="move configuration to bootstrap.yml and application.yml" />
+    <MESSAGE value="add application.yml configuration for multiple services and databases" />
+    <MESSAGE value="add AuthController for user authentication via IoT platform" />
+    <MESSAGE value="add automation service components including controller, service, model, and repository" />
+    <MESSAGE value="add bootstrap configuration for multiple services including api-gateway, automation-service, crop-service, sensor-service, and zone-service" />
+    <MESSAGE value="add Config Server application and tests for configuration management" />
+    <MESSAGE value="add Crop entity with fields for name, quantity, zoneId, and status" />
+    <MESSAGE value="add CropController, CropRepository, and CropRequest for managing crop entities" />
+    <MESSAGE value="add CropService and CropResponse for managing crop lifecycle and status updates" />
+    <MESSAGE value="add EurekaServerApplication and GlobalExceptionHandler for service discovery and error handling" />
+    <MESSAGE value="add IoT integration components for device management and authentication" />
+    <option name="LAST_COMMIT_MESSAGE" value="add IoT integration components for device management and authentication" />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
+  </component>
+</project>

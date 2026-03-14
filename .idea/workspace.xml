@@ -4,57 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a46e6583-d3cd-46cf-8cc8-fbca80e4d2d4" name="Changes" comment="add IoT integration components for device management and authentication">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Automation-Control-Service/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Automation-Control-Service/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Automation-Control-Service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Automation-Control-Service/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Automation-Control-Service/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Automation-Control-Service/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Automation-Control-Service/src/main/java/com/myapp/Automation_Control_Service/AutomationControlServiceApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Automation-Control-Service/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Automation-Control-Service/src/test/java/com/myapp/Automation_Control_Service/AutomationControlServiceApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crop-Inventory-Service/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crop-Inventory-Service/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crop-Inventory-Service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crop-Inventory-Service/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crop-Inventory-Service/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crop-Inventory-Service/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crop-Inventory-Service/src/main/java/com/myapp/Crop_Inventory_Service/CropInventoryServiceApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crop-Inventory-Service/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crop-Inventory-Service/src/test/java/com/myapp/Crop_Inventory_Service/CropInventoryServiceApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sensor-Telemetry-Service/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sensor-Telemetry-Service/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sensor-Telemetry-Service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sensor-Telemetry-Service/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sensor-Telemetry-Service/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sensor-Telemetry-Service/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sensor-Telemetry-Service/src/main/java/com/myapp/Sensor_Telemetry_Service/SensorTelemetryServiceApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sensor-Telemetry-Service/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sensor-Telemetry-Service/src/test/java/com/myapp/Sensor_Telemetry_Service/SensorTelemetryServiceApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zone-Management-Service/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zone-Management-Service/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zone-Management-Service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zone-Management-Service/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zone-Management-Service/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zone-Management-Service/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zone-Management-Service/src/main/java/com/myapp/Zone_Management_Service/ZoneManagementServiceApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zone-Management-Service/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zone-Management-Service/src/test/java/com/myapp/Zone_Management_Service/ZoneManagementServiceApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-registery/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-registery/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-registery/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-registery/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-registery/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-registery/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-registery/src/main/java/com/myapp/service_registery/ServiceRegisteryApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-registery/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-registery/src/test/java/com/myapp/service_registery/ServiceRegisteryApplicationTests.java" beforeDir="false" />
+    <list default="true" id="a46e6583-d3cd-46cf-8cc8-fbca80e4d2d4" name="Changes" comment="update Maven project references in misc.xml for api-gateway integration">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,18 +204,138 @@
       <option name="project" value="LOCAL" />
       <updated>1773505297820</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="add IoT login and refresh request/response DTOs for authentication">
+      <option name="closed" value="true" />
+      <created>1773505324095</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505324095</updated>
+    </task>
+    <task id="LOCAL-00019" summary="add IoTLoginResponse DTO for handling authentication response from IoT platform">
+      <option name="closed" value="true" />
+      <created>1773505337137</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505337137</updated>
+    </task>
+    <task id="LOCAL-00020" summary="add IoTRegisterRequest and IoTRegisterResponse DTOs for user registration handling&#10;add IoTTelemetryClient interface for fetching device telemetry data">
+      <option name="closed" value="true" />
+      <created>1773505353103</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505353103</updated>
+    </task>
+    <task id="LOCAL-00021" summary="add JwtAuthFilter and JwtUtil for JWT authentication handling">
+      <option name="closed" value="true" />
+      <created>1773505367513</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505367513</updated>
+    </task>
+    <task id="LOCAL-00022" summary="add LoginRequest and LoginResponse DTOs for handling authentication requests and responses">
+      <option name="closed" value="true" />
+      <created>1773505381108</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505381108</updated>
+    </task>
+    <task id="LOCAL-00023" summary="add maven-wrapper.properties for Maven wrapper configuration">
+      <option name="closed" value="true" />
+      <created>1773505399311</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505399311</updated>
+    </task>
+    <task id="LOCAL-00024" summary="add Maven Wrapper script for project setup and dependency management">
+      <option name="closed" value="true" />
+      <created>1773505420899</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505420899</updated>
+    </task>
+    <task id="LOCAL-00025" summary="add Maven Wrapper batch script for project setup and dependency management">
+      <option name="closed" value="true" />
+      <created>1773505441849</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505441849</updated>
+    </task>
+    <task id="LOCAL-00026" summary="add Sensor microservice with sensor reading model, repository, and controller">
+      <option name="closed" value="true" />
+      <created>1773505486552</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505486552</updated>
+    </task>
+    <task id="LOCAL-00027" summary="add Sensor service for fetching and storing telemetry data">
+      <option name="closed" value="true" />
+      <created>1773505500630</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505500630</updated>
+    </task>
+    <task id="LOCAL-00028" summary="add Security configuration for JWT authentication and authorization">
+      <option name="closed" value="true" />
+      <created>1773505513256</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505513256</updated>
+    </task>
+    <task id="LOCAL-00029" summary="add utility class for generating test JWT tokens">
+      <option name="closed" value="true" />
+      <created>1773505524412</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505524412</updated>
+    </task>
+    <task id="LOCAL-00030" summary="add Zone service components for managing zones and IoT integration">
+      <option name="closed" value="true" />
+      <created>1773505547005</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505547005</updated>
+    </task>
+    <task id="LOCAL-00031" summary="add ZoneUpdateRequest DTO and ZoneServiceApplicationTests for testing">
+      <option name="closed" value="true" />
+      <created>1773505558263</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505558263</updated>
+    </task>
+    <task id="LOCAL-00032" summary="update Maven project references in misc.xml for api-gateway integration">
+      <option name="closed" value="true" />
+      <created>1773505627046</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505627046</updated>
+    </task>
+    <task id="LOCAL-00033" summary="update Maven project references in misc.xml for api-gateway integration">
+      <option name="closed" value="true" />
+      <created>1773505642044</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1773505642045</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="update VCS directory mapping in vcs.xml" />
-    <MESSAGE value="add .gitattributes for end-of-line normalization" />
-    <MESSAGE value="add .gitignore file to exclude IDE and build artifacts" />
-    <MESSAGE value="add AGMS Postman collection for full API testing" />
-    <MESSAGE value="add ApiGatewayApplication class for Spring Boot application" />
-    <MESSAGE value="add unit tests for ApiGatewayApplication" />
-    <MESSAGE value="move configuration to bootstrap.yml and application.yml" />
-    <MESSAGE value="add application.yml configuration for multiple services and databases" />
     <MESSAGE value="add AuthController for user authentication via IoT platform" />
     <MESSAGE value="add automation service components including controller, service, model, and repository" />
     <MESSAGE value="add bootstrap configuration for multiple services including api-gateway, automation-service, crop-service, sensor-service, and zone-service" />
@@ -274,7 +345,23 @@
     <MESSAGE value="add CropService and CropResponse for managing crop lifecycle and status updates" />
     <MESSAGE value="add EurekaServerApplication and GlobalExceptionHandler for service discovery and error handling" />
     <MESSAGE value="add IoT integration components for device management and authentication" />
-    <option name="LAST_COMMIT_MESSAGE" value="add IoT integration components for device management and authentication" />
+    <MESSAGE value="add IoT login and refresh request/response DTOs for authentication" />
+    <MESSAGE value="add IoTLoginResponse DTO for handling authentication response from IoT platform" />
+    <MESSAGE value="add IoTRegisterRequest and IoTRegisterResponse DTOs for user registration handling&#10;add IoTTelemetryClient interface for fetching device telemetry data" />
+    <MESSAGE value="add JwtAuthFilter and JwtUtil for JWT authentication handling" />
+    <MESSAGE value="add LoginRequest and LoginResponse DTOs for handling authentication requests and responses" />
+    <MESSAGE value="add maven-wrapper.properties for Maven wrapper configuration" />
+    <MESSAGE value="add Maven Wrapper script for project setup and dependency management" />
+    <MESSAGE value="add Maven Wrapper batch script for project setup and dependency management" />
+    <MESSAGE value="add pom.xml files for multiple microservices in AGMS project" />
+    <MESSAGE value="add Sensor microservice with sensor reading model, repository, and controller" />
+    <MESSAGE value="add Sensor service for fetching and storing telemetry data" />
+    <MESSAGE value="add Security configuration for JWT authentication and authorization" />
+    <MESSAGE value="add utility class for generating test JWT tokens" />
+    <MESSAGE value="add Zone service components for managing zones and IoT integration" />
+    <MESSAGE value="add ZoneUpdateRequest DTO and ZoneServiceApplicationTests for testing" />
+    <MESSAGE value="update Maven project references in misc.xml for api-gateway integration" />
+    <option name="LAST_COMMIT_MESSAGE" value="update Maven project references in misc.xml for api-gateway integration" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

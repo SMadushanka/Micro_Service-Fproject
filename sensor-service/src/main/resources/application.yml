@@ -1,6 +1,9 @@
 server:
   port: 8082
 
+jwt:
+  secret: ${JWT_SECRET:404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970}
+
 spring:
   datasource:
     url: jdbc:h2:mem:sensordb
@@ -20,9 +23,13 @@ iot:
     base-url: http://104.211.95.241:8080/api   # Replace with actual IoT API base URL
     device-id: 6dd1b80c-4a05-4ec0-a371-f7782774435a            # Replace with the deviceId stored during zone creation
     bearer-token:                              # Legacy fallback — leave blank; token is now auto-refreshed at startup
-    username: sampath                          # IoT platform username used for auto-authentication
-    password: 123456              # ← REPLACE THIS with the real IoT password for "kavindu"
+    username: ${IOT_USERNAME:sampath}          # IoT platform username used for auto-authentication
+    password: ${IOT_PASSWORD:change-me-in-prod}
     zone-id: 1                               # Must be a numeric ID from zone-service (the 'id' field in the zone creation response)
+
+agms:
+  internal:
+    service-subject: ${AGMS_INTERNAL_SUBJECT:sensor-service}
 
 eureka:
   client:

@@ -7,9 +7,12 @@ import com.agms.sensor_service.client.IoTTelemetryClient;
 import com.agms.sensor_service.client.AutomationClient;
 import com.agms.sensor_service.model.SensorReading;
 import com.agms.sensor_service.repository.SensorReadingRepository;
+import com.agms.sensor_service.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -24,12 +27,16 @@ public class SensorService {
     private final AutomationClient automationClient;
     private final TokenRefreshService tokenRefreshService;
     private final SensorReadingRepository readingRepository;
+    private final JwtUtil jwtUtil;
 
     @Value("${iot.api.device-id}")
     private String deviceId;
 
     @Value("${iot.api.zone-id}")
     private Long zoneId;
+
+    @Value("${agms.internal.service-subject:sensor-service}")
+    private String internalServiceSubject;
 
     // Fast in-memory cache — backed by DB for persistence across restarts
     private final AtomicReference<SensorReadingResponse> latestCache = new AtomicReference<>();
@@ -103,11 +110,22 @@ public class SensorService {
                     .zoneId(zoneId)
                     .currentTemp(temperature)
                     .build();
-            automationClient.process(automationRequest);
+            automationClient.process(resolveAuthorizationHeader(), automationRequest);
             log.info("Forwarded temp={}°C for zoneId={} to automation-service", temperature, zoneId);
         } catch (Exception e) {
             log.error("Failed to forward telemetry to automation-service: {}", e.getMessage());
         }
+    }
+
+    private String resolveAuthorizationHeader() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getCredentials() instanceof String token && !token.isBlank()) {
+            return "Bearer " + token;
+        }
+
+        // Scheduler-triggered flows do not have a user context; use short-lived service token.
+        String serviceToken = jwtUtil.generateToken(internalServiceSubject, 300_000L);
+        return "Bearer " + serviceToken;
     }
 
     private SensorReadingResponse toResponse(SensorReading reading) {

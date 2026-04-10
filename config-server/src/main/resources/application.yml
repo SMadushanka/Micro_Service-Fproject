@@ -5,7 +5,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/SMadushanka/Micro_Service-configFill
+          uri: https://github.com/SMadushanka/Micro_Service-ConfigFill
           default-label: main
           search-paths: '{application}'
           clone-on-start: true

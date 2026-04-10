@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a46e6583-d3cd-46cf-8cc8-fbca80e4d2d4" name="Changes" comment="update application.yml and workspace.xml for new Maven project references">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/agms/api_gateway/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/agms/api_gateway/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/agms/api_gateway/security/JwtAuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/agms/api_gateway/security/JwtAuthFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/automation-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/automation-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/automation-service/src/main/java/com/agms/automation_service/client/ZoneClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/automation-service/src/main/java/com/agms/automation_service/client/ZoneClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/automation-service/src/main/java/com/agms/automation_service/controller/AutomationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/automation-service/src/main/java/com/agms/automation_service/controller/AutomationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/automation-service/src/main/java/com/agms/automation_service/service/AutomationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/automation-service/src/main/java/com/agms/automation_service/service/AutomationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/automation-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/automation-service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crop-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/crop-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crop-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/crop-service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sensor-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor-service/src/main/java/com/agms/sensor_service/client/AutomationClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/sensor-service/src/main/java/com/agms/sensor_service/client/AutomationClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor-service/src/main/java/com/agms/sensor_service/service/SensorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/sensor-service/src/main/java/com/agms/sensor_service/service/SensorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/sensor-service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zone-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/zone-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zone-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/zone-service/src/main/resources/application.yml" afterDir="false" />
-    </list>
+    <list default="true" id="a46e6583-d3cd-46cf-8cc8-fbca80e4d2d4" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,18 +39,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/IJSE 71/MS F-project&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/IJSE 71/MS F-project",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -355,22 +339,111 @@
       <option name="project" value="LOCAL" />
       <updated>1773506563365</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="add JWT configuration and update IoT credentials in application.yml">
+      <option name="closed" value="true" />
+      <created>1775831779515</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1775831779515</updated>
+    </task>
+    <task id="LOCAL-00036" summary="add authorization header to automation process methods">
+      <option name="closed" value="true" />
+      <created>1775831801190</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1775831801190</updated>
+    </task>
+    <task id="LOCAL-00037" summary="add compiler, encodings, and jarRepositories configuration for api-gateway">
+      <option name="closed" value="true" />
+      <created>1775831813631</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1775831813631</updated>
+    </task>
+    <task id="LOCAL-00038" summary="refactor JWT authentication handling and enhance security exception responses">
+      <option name="closed" value="true" />
+      <created>1775831833165</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1775831833165</updated>
+    </task>
+    <task id="LOCAL-00039" summary="add Spring Security and JWT dependencies to pom.xml">
+      <option name="closed" value="true" />
+      <created>1775831846922</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1775831846922</updated>
+    </task>
+    <task id="LOCAL-00040" summary="update application.yml and workspace.xml for new Maven project references">
+      <option name="closed" value="true" />
+      <created>1775831861193</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1775831861193</updated>
+    </task>
+    <task id="LOCAL-00041" summary="enhance authorization handling in SensorService and ZoneClient">
+      <option name="closed" value="true" />
+      <created>1775831877693</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1775831877693</updated>
+    </task>
+    <task id="LOCAL-00042" summary="add JwtAuthFilter and JwtUtil for JWT authentication handling">
+      <option name="closed" value="true" />
+      <created>1775831896307</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1775831896307</updated>
+    </task>
+    <task id="LOCAL-00043" summary="add JwtUtil class for JWT token generation and validation across services">
+      <option name="closed" value="true" />
+      <created>1775831908672</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1775831908672</updated>
+    </task>
+    <task id="LOCAL-00044" summary="add SecurityConfig class for JWT authentication configuration in multiple services">
+      <option name="closed" value="true" />
+      <created>1775831920763</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1775831920763</updated>
+    </task>
+    <task id="LOCAL-00045" summary="add README.md for AGMS system documentation and setup instructions">
+      <option name="closed" value="true" />
+      <created>1775831935034</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1775831935034</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add automation service components including controller, service, model, and repository" />
-    <MESSAGE value="add bootstrap configuration for multiple services including api-gateway, automation-service, crop-service, sensor-service, and zone-service" />
-    <MESSAGE value="add Config Server application and tests for configuration management" />
-    <MESSAGE value="add Crop entity with fields for name, quantity, zoneId, and status" />
-    <MESSAGE value="add CropController, CropRepository, and CropRequest for managing crop entities" />
-    <MESSAGE value="add CropService and CropResponse for managing crop lifecycle and status updates" />
-    <MESSAGE value="add EurekaServerApplication and GlobalExceptionHandler for service discovery and error handling" />
-    <MESSAGE value="add IoT integration components for device management and authentication" />
-    <MESSAGE value="add IoT login and refresh request/response DTOs for authentication" />
     <MESSAGE value="add IoTLoginResponse DTO for handling authentication response from IoT platform" />
     <MESSAGE value="add IoTRegisterRequest and IoTRegisterResponse DTOs for user registration handling&#10;add IoTTelemetryClient interface for fetching device telemetry data" />
-    <MESSAGE value="add JwtAuthFilter and JwtUtil for JWT authentication handling" />
     <MESSAGE value="add LoginRequest and LoginResponse DTOs for handling authentication requests and responses" />
     <MESSAGE value="add maven-wrapper.properties for Maven wrapper configuration" />
     <MESSAGE value="add Maven Wrapper script for project setup and dependency management" />
@@ -383,8 +456,18 @@
     <MESSAGE value="add Zone service components for managing zones and IoT integration" />
     <MESSAGE value="add ZoneUpdateRequest DTO and ZoneServiceApplicationTests for testing" />
     <MESSAGE value="update Maven project references in misc.xml for api-gateway integration" />
+    <MESSAGE value="add JWT configuration and update IoT credentials in application.yml" />
+    <MESSAGE value="add authorization header to automation process methods" />
+    <MESSAGE value="add compiler, encodings, and jarRepositories configuration for api-gateway" />
+    <MESSAGE value="refactor JWT authentication handling and enhance security exception responses" />
+    <MESSAGE value="add Spring Security and JWT dependencies to pom.xml" />
     <MESSAGE value="update application.yml and workspace.xml for new Maven project references" />
-    <option name="LAST_COMMIT_MESSAGE" value="update application.yml and workspace.xml for new Maven project references" />
+    <MESSAGE value="enhance authorization handling in SensorService and ZoneClient" />
+    <MESSAGE value="add JwtAuthFilter and JwtUtil for JWT authentication handling" />
+    <MESSAGE value="add JwtUtil class for JWT token generation and validation across services" />
+    <MESSAGE value="add SecurityConfig class for JWT authentication configuration in multiple services" />
+    <MESSAGE value="add README.md for AGMS system documentation and setup instructions" />
+    <option name="LAST_COMMIT_MESSAGE" value="add README.md for AGMS system documentation and setup instructions" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

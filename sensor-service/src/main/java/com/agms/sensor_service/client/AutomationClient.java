@@ -2,8 +2,10 @@ package com.agms.sensor_service.client;
 
 import com.agms.sensor_service.dto.AutomationProcessRequest;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 @FeignClient(name = "automation-service")   // Resolved via Eureka — no URL needed
 public interface AutomationClient {
@@ -13,5 +15,8 @@ public interface AutomationClient {
      * Returns void — sensor-service does not need the action result.
      */
     @PostMapping("/api/automation/process")
-    void process(@RequestBody AutomationProcessRequest request);
+    void process(
+            @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization,
+            @RequestBody AutomationProcessRequest request
+    );
 }

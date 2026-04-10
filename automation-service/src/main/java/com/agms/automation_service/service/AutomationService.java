@@ -33,12 +33,12 @@ public class AutomationService {
      *   otherwise             → NO_ACTION
      */
     @Transactional
-    public AutomationLogResponse process(ProcessRequest request) {
+    public AutomationLogResponse process(String authorization, ProcessRequest request) {
         log.info("Processing automation for zoneId={}, temp={}°C",
                 request.getZoneId(), request.getCurrentTemp());
 
         // Fetch zone thresholds via Feign → zone-service
-        ZoneResponse zone = zoneClient.getZoneById(request.getZoneId());
+        ZoneResponse zone = zoneClient.getZoneById(authorization, request.getZoneId());
         log.info("Zone thresholds: minTemp={}, maxTemp={}", zone.getMinTemp(), zone.getMaxTemp());
 
         if (zone.getMinTemp() == null || zone.getMaxTemp() == null) {

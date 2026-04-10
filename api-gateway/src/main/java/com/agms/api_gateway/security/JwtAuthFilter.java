@@ -7,7 +7,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -31,36 +30,25 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
 
-        // 1 — Missing header
-        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            log.warn("Missing or malformed Authorization header on {}", request.getRequestURI());
-            sendUnauthorized(response, "Missing or malformed Authorization header");
-            return;
+        // If a Bearer token is present, validate it and populate the SecurityContext.
+        // If no token is present (e.g. /auth/login), just continue — Spring Security's
+        // authorization rules (permitAll / authenticated) decide what to allow.
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            String token = authHeader.substring(7);
+            try {
+                String subject = jwtUtil.validateAndGetSubject(token);
+                log.debug("JWT valid for subject: {}", subject);
+
+                UsernamePasswordAuthenticationToken authentication =
+                        new UsernamePasswordAuthenticationToken(subject, null, List.of());
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+
+            } catch (Exception e) {
+                log.warn("JWT validation failed: {}", e.getMessage());
+                // Do not set authentication — Spring Security will reject if endpoint is secured
+            }
         }
 
-        String token = authHeader.substring(7); // strip "Bearer "
-
-        try {
-            // 2 — Validate token; throws on expiry / bad signature / malformed
-            String subject = jwtUtil.validateAndGetSubject(token);
-            log.debug("JWT valid for subject: {}", subject);
-
-            // 3 — Set authentication in SecurityContext so downstream filters pass
-            UsernamePasswordAuthenticationToken authentication =
-                    new UsernamePasswordAuthenticationToken(subject, null, List.of());
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-
-            filterChain.doFilter(request, response);
-
-        } catch (Exception e) {
-            log.warn("JWT validation failed: {}", e.getMessage());
-            sendUnauthorized(response, "Invalid or expired token");
-        }
-    }
-
-    private void sendUnauthorized(HttpServletResponse response, String message) throws IOException {
-        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-        response.getWriter().write("{\"error\": \"Unauthorized\", \"message\": \"" + message + "\"}");
+        filterChain.doFilter(request, response);
     }
 }

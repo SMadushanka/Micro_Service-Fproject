@@ -1,11 +1,14 @@
 package com.agms.api_gateway.config;
 
 import com.agms.api_gateway.security.JwtAuthFilter;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.MediaType;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -23,6 +26,15 @@ public class SecurityConfig {
         return new RestTemplate();
     }
 
+    /**
+     * Completely bypass the Spring Security filter chain for public endpoints.
+     * This is more reliable than permitAll() for stateless REST APIs.
+     */
+    @Bean
+    public WebSecurityCustomizer webSecurityCustomizer() {
+        return web -> web.ignoring().requestMatchers("/auth/**");
+    }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -31,9 +43,6 @@ public class SecurityConfig {
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             )
             .authorizeHttpRequests(auth -> auth
-                // Public — login to obtain an AGMS JWT
-                .requestMatchers("/auth/**").permitAll()
-                // All API routes require a valid AGMS JWT
                 .requestMatchers(
                     "/api/zones/**",
                     "/api/sensors/**",
@@ -42,7 +51,18 @@ public class SecurityConfig {
                 ).authenticated()
                 .anyRequest().authenticated()
             )
-            // Run JWT filter before Spring Security's authentication filter
+            .exceptionHandling(ex -> ex
+                .authenticationEntryPoint((request, response, e) -> {
+                    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                    response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+                    response.getWriter().write("{\"error\":\"Unauthorized\",\"message\":\"Missing or invalid token\"}");
+                })
+                .accessDeniedHandler((request, response, e) -> {
+                    response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                    response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+                    response.getWriter().write("{\"error\":\"Forbidden\",\"message\":\"Access denied\"}");
+                })
+            )
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
